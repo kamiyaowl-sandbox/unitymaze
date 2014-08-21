@@ -31,6 +31,7 @@ class SimpleMazeSolver : MazeSolver {
 				return true;
 			case Maze.Piece.Start:
 			case Maze.Piece.Empty:
+			case Maze.Piece.Hint:
 				field[y][x] = Maze.Piece.Mark;
 				var challenge = new int[][] { 
 						new int[]{ x - 1, y }, 

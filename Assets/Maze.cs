@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 class Maze {
-	public enum Piece { Empty, Wall, Start, Goal, Answer, NoAnswer, Mark }
+	public enum Piece { Empty, Wall, Start, Goal, Answer, NoAnswer, Mark, Hint }
 	public Piece[][] Field { get; set; }
 	public int Width { get { return width; } }
 	public int Height { get { return height; } }

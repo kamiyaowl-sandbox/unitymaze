@@ -35,9 +35,21 @@ class SimpleMazeCreator : MazeCreator {
 			for (int i = 2; i < w - 1; i += 2) {
 				field[j][i] = Maze.Piece.Wall;
 				//棒倒し
-				int x = i, y = j;
-				RandomUtil.Call(() => x -= 1, () => x += 1, () => y += 1);
-				field[y][x] = Maze.Piece.Wall;
+
+				var challenge = new List<int[]> { 
+						new int[]{ i - 1, j }, 
+						new int[]{ i + 1, j }, 
+						//new int[]{ i, j - 1 }, 
+						new int[]{ i, j + 1 }
+					};
+				if (j == 2) challenge.Add(new int[] { i, j - 1 });
+				foreach (var pos in challenge.Shuffle()) {
+					if (field[pos[1]][pos[0]] == Maze.Piece.Wall) continue;
+					else {
+						field[pos[1]][pos[0]] = Maze.Piece.Wall;
+						break;
+					}
+				}
 			}
 		}
 		field[1][1] = Maze.Piece.Start;
